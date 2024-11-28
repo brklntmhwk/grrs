@@ -21,12 +21,17 @@ fn main() -> Result<()> {
     Ok(())
 }
 
-#[test]
-fn find_a_match() -> Result<()> {
-    let mut result = Vec::new();
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-    grrs::find_matches("lorem ipsum\ndolor sit amet", "lorem", &mut result)?;
-    assert_eq!(result, b"lorem ipsum\n");
+    #[test]
+    fn find_a_match() -> Result<()> {
+        let mut result = Vec::new();
 
-    Ok(())
+        grrs::find_matches("lorem ipsum\ndolor sit amet", "lorem", &mut result)?;
+        assert_eq!(result, b"lorem ipsum\n");
+
+        Ok(())
+    }
 }
